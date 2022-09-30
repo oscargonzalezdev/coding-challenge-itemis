@@ -6,20 +6,20 @@ import { getSalesTaxes } from "../utils/getSalesTaxes"
 import { getTotal } from "../utils/getTotal"
 
 function ReceiptDetails(props) {
-    const { data, onHandleRemoveProducts } = props
+    const { data, title, onHandleRemoveProducts } = props
     const purchasedProducts = [...data]
     return (
         <section>
-            <Heading textAlign='center' as='h2' p='4' size='md'>Receipt Details</Heading>
-            <Box h='600px' bg='gray.50' borderRadius='20' overflow='scroll' overflowX='hidden'>
+            <Heading textAlign='center' as='h2' p='4' size='md'>{ title ? title : 'Receipt Details'}</Heading>
+            <Box maxH='600px' bg='gray.50' borderRadius='20' overflow='scroll' overflowX='hidden' p='5' >
                 {!purchasedProducts.length > 0 ? (
-                    <Alert status='warning' flexDirection='column' p='10'>
+                    <Alert status='warning' flexDirection='column' p='10' borderRadius='10'>
                         <Text fontSize='3rem'>🛒</Text>
                         <p>Seems your shopping cart is empty. </p>
                         <p><strong>Buy some products to see your receipt.</strong></p>
                     </Alert>
                 ) : (
-                    <Table variant='striped' colorScheme='teal' >
+                    <Table variant='striped' maxW='700px' colorScheme='teal' >
                         <Thead>
                             <Tr>
                                 <Th w='250px'>Product</Th>
@@ -35,7 +35,9 @@ function ReceiptDetails(props) {
                                 return (
                                     <Tr key={index}>
                                         <Td display='flex'>
-                                            <Button variant='ghost' size='sx' marginRight='4' onClick={() => onHandleRemoveProducts(product)}>❌</Button>
+                                            { onHandleRemoveProducts &&
+                                                <Button variant='ghost' size='sx' marginRight='4' onClick={() => onHandleRemoveProducts(product)}>❌</Button>
+                                            }
                                             {product.isImported ? `imported ${product.name}` : product.name}
                                         </Td>
                                         <Td >{1}</Td>
