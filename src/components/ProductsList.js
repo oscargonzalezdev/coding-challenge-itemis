@@ -5,8 +5,8 @@ function ProductsList(props) {
     const { onHandleBuyProduct } = props
     return (
         <section>
-            <Heading as='h2' p='4' size='md'>Products</Heading>
-            <Box h='600px' overflow='scroll' overflowX='hidden'>
+            <Heading textAlign='center' as='h2' p='4' size='md'>Products</Heading>
+            <Box h='600px' margin='auto' overflow='scroll' overflowX='hidden'>
                 {productsArr.map((product, index) => {
                     return (
                         <Box key={index} borderRadius='10' p='4' m='4' bg='gray.100' gap='4' display='flex' shadow='base'>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ReceiptDetails from './ReceiptDetails'
 import ProductsList from './ProductsList'
-import { Box, Heading } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/react'
 
 function ReceiptCalculator() {
     // this state store the purchased products
@@ -20,17 +20,12 @@ function ReceiptCalculator() {
 
     return (
         <section>
-            <Box textAlign='center' p={8}>
-                <Heading as='h1' size='lg'>Sales Taxes</Heading>
-                <Heading fontWeight='semibold' as='h2' size='sm'>Coding Challenge</Heading>
-            </Box>
-            
+            <Heading textAlign='center' as='h1' p='8' size='lg'>Receipt Calculator</Heading>
             <div className='flex-row'>
                 <ProductsList onHandleBuyProduct={handleBuyProduct} />
                 <ReceiptDetails data={purchasedProducts} onHandleRemoveProducts={removeProducts} />
             </div>
         </section>
-
     )
 }
 
